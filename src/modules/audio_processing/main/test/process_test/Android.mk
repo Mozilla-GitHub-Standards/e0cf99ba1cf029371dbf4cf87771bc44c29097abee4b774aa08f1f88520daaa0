@@ -22,8 +22,18 @@ LOCAL_CFLAGS := \
     '-DWEBRTC_TARGET_PC' \
     '-DWEBRTC_LINUX' \
     '-DWEBRTC_THREAD_RR' \
-    '-DWEBRTC_ANDROID' \
     '-DANDROID' 
+
+ifneq ($(TARGET_ARCH_VARIANT),armv5te)
+ifneq ($(TARGET_ARCH_VARIANT),armv5te-vfp)
+ifneq ($(TARGET_ARCH_VARIANT),armv6)
+ifneq ($(TARGET_ARCH_VARIANT),armv6-vfp)
+LOCAL_CFLAGS += \
+    '-DWEBRTC_ANDROID'
+endif
+endif
+endif
+endif
 
 LOCAL_CPPFLAGS := 
 LOCAL_LDFLAGS :=

@@ -31,9 +31,20 @@ MY_DEFS := '-DNO_TCMALLOC' \
     '-DWEBRTC_LINUX' 
 ifeq ($(TARGET_ARCH),arm) 
 MY_DEFS += \
-    '-DWEBRTC_ANDROID' \
     '-DANDROID' 
+
+ifneq ($(TARGET_ARCH_VARIANT),armv5te)
+ifneq ($(TARGET_ARCH_VARIANT),armv5te-vfp)
+ifneq ($(TARGET_ARCH_VARIANT),armv6)
+ifneq ($(TARGET_ARCH_VARIANT),armv6-vfp)
+MY_DEFS += \
+    '-DWEBRTC_ANDROID'
 endif
+endif
+endif
+endif
+endif
+
 LOCAL_CFLAGS := $(MY_CFLAGS_C) $(MY_CFLAGS) $(MY_DEFS)
 
 # Include paths placed before CFLAGS/CPPFLAGS

@@ -18,7 +18,6 @@
 #include "signal_processing_library.h"
 
 #ifndef SPL_NO_DOUBLE_IMPLEMENTATIONS
-
 int WebRtcSpl_NormW16(WebRtc_Word16 value)
 {
     int zeros = 0;
